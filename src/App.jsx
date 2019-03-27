@@ -14,8 +14,10 @@ const App = props => {
 					</div>
 
 					<nav>
-						<Link to="/">Home</Link>
-						<Link to="/faves">Favourite(s) {state.favourites.length}</Link>
+						<Link to="rick-and-morty-episode-picker/">Home</Link>
+						<Link to="rick-and-morty-episode-picker/faves">
+							Favourite(s) {state.favourites.length}
+						</Link>
 					</nav>
 				</header>
 				{props.children}

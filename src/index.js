@@ -12,9 +12,9 @@ import FavPage from "./pages/FavPage";
 ReactDOM.render(
 	<StoreProivder>
 		<Router>
-			<App path="/">
-				<HomePage path="/" />
-				<FavPage path="/faves" />
+			<App path="rick-and-morty-episode-picker/">
+				<HomePage path="rick-and-morty-episode-picker/" />
+				<FavPage path="rick-and-morty-episode-picker/faves" />
 			</App>
 		</Router>
 	</StoreProivder>,
