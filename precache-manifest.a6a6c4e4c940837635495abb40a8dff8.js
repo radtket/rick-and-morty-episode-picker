@@ -4,12 +4,12 @@ self.__precacheManifest = [
     "url": "/rick-and-morty-episode-picker/static/js/0.72bf1978.chunk.js"
   },
   {
-    "revision": "fb5f07d1652e3283b63a",
+    "revision": "97b47b911bac459877cf",
     "url": "/rick-and-morty-episode-picker/static/css/main.a5857a1c.chunk.css"
   },
   {
-    "revision": "fb5f07d1652e3283b63a",
-    "url": "/rick-and-morty-episode-picker/static/js/main.ce751807.chunk.js"
+    "revision": "97b47b911bac459877cf",
+    "url": "/rick-and-morty-episode-picker/static/js/main.0466ce7f.chunk.js"
   },
   {
     "revision": "974dcf942bd90fa73155",
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/rick-and-morty-episode-picker/static/js/3.1735a843.chunk.js"
   },
   {
-    "revision": "c0517cdbd6236f73b22eb42b14610b69",
+    "revision": "3f92e9a90234473815653b6bd2bed7ef",
     "url": "/rick-and-morty-episode-picker/index.html"
   }
 ];
