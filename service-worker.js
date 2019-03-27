@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/rick-and-morty-episode-picker/precache-manifest.a6a6c4e4c940837635495abb40a8dff8.js"
+  "/rick-and-morty-episode-picker/precache-manifest.33b25e81143984b432ddc11a912664b7.js"
 );
 
 workbox.clientsClaim();
