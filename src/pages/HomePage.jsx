@@ -48,7 +48,7 @@ const HomePage = () => {
 	};
 
 	useEffect(() => {
-		state.episodes.length === 0 && fetchDataAction();
+		episodes.length === 0 && fetchDataAction();
 	});
 
 	return (
