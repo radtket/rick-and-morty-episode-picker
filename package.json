@@ -1,6 +1,6 @@
 {
-  "name": "rick-and-morty-episode-picker",
-  "homepage": "http://radtket.github.io/rick-and-morty-episode-picker",
+  "name": "rick-and-morty-team-picker",
+  "homepage": "http://radtket.github.io/rick-and-morty-team-picker",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

@@ -9,15 +9,27 @@ body {
 }
 
 
-.episode-layout {
+.team-layout {
   display: flex;
   flex-wrap: wrap;
   min-width: 100vh;
 }
 
-.episode-box {
-  padding: 0.5rem;
+.team-box {
+  padding: 1%;
+  width: 18%;
+  border: 1px solid;
+  margin: -1px;
+  text-align: center;
 }
+
+.team-box img {
+  height: 100px;
+  max-width: 100px;
+  margin: auto;
+  display: block;
+}
+
 
 .header {
   align-items: center;

@@ -3,7 +3,7 @@ import React, { useReducer, createContext } from "react";
 export const Store = createContext();
 
 const initialState = {
-	episodes: [],
+	teams: [],
 	favourites: []
 };
 
@@ -11,7 +11,7 @@ function reducer(state, action) {
 	const { type, payload } = action;
 	switch (type) {
 		case "FETCH_DATA":
-			return { ...state, episodes: payload };
+			return { ...state, teams: payload };
 		case "ADD_FAV":
 			return {
 				...state,

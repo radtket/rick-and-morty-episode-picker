@@ -1,27 +1,30 @@
 import React, { Fragment, Suspense, lazy, useEffect, useContext } from "react";
 import { Store } from "../Store";
 
-const EpisodesList = lazy(() => import("../components/EpisodesList"));
+const TeamsList = lazy(() => import("../components/TeamsList"));
 
 const HomePage = () => {
 	const { state, dispatch } = useContext(Store);
 
-	const toggleFavAction = episode => {
-		const episodeInFavourites = state.favourites.includes(episode);
+	const toggleFavAction = team => {
+		const teamInFavourites = state.favourites.includes(team);
 
 		let dispatchObj = {
 			type: "ADD_FAV",
-			payload: episode
+			payload: team
 		};
 
-		if (episodeInFavourites) {
-			const favouritesWithoutEpisode = state.favourites.filter(
-				fav => fav.id !== episode.id
-			);
+		if (teamInFavourites) {
+			const { favourites } = state;
+			const favouritesWithoutTeam = favourites.filter(fav => {
+				const { TeamID: FavTeamID } = fav;
+				const { TeamID } = team;
+				return FavTeamID !== TeamID;
+			});
 
 			dispatchObj = {
 				type: "REMOVE_FAV",
-				payload: favouritesWithoutEpisode
+				payload: favouritesWithoutTeam
 			};
 		}
 
@@ -29,33 +32,33 @@ const HomePage = () => {
 	};
 
 	const fetchDataAction = async () => {
-		const data = await fetch(
-			"https://api.tvmaze.com/singlesearch/shows?q=rick-&-morty&embed=episodes"
-		);
+		const data = await fetch("/data/teams-with-stadiums.json");
 		const dataJSON = await data.json();
+		console.log(dataJSON);
+
 		return dispatch({
 			type: "FETCH_DATA",
-			payload: dataJSON._embedded.episodes
+			payload: dataJSON
 		});
 	};
 
-	const { favourites, episodes } = state;
+	const { favourites, teams } = state;
 
 	const props = {
-		episodes,
+		teams,
 		toggleFavAction,
 		favourites
 	};
 
 	useEffect(() => {
-		episodes.length === 0 && fetchDataAction();
+		teams.length === 0 && fetchDataAction();
 	});
 
 	return (
 		<Fragment>
 			<Suspense fallback={<div>Loading...</div>}>
-				<section className="episode-layout">
-					<EpisodesList {...props} />
+				<section className="team-layout">
+					<TeamsList {...props} />
 				</section>
 			</Suspense>
 		</Fragment>

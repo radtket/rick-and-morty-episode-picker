@@ -1,27 +1,31 @@
 import React, { lazy, useContext, Suspense } from "react";
 import { Store } from "../Store";
 
-const EpisodesList = lazy(() => import("../components/EpisodesList"));
+const TeamsList = lazy(() => import("../components/TeamsList"));
 
 const FavPage = () => {
 	const { state, dispatch } = useContext(Store);
 
-	const toggleFavAction = episode => {
-		const episodeInFavourites = state.favourites.includes(episode);
+	const toggleFavAction = team => {
+		const { favourites } = state;
+		const teamInFavourites = favourites.includes(team);
 
 		let dispatchObj = {
 			type: "ADD_FAV",
-			payload: episode
+			payload: team
 		};
 
-		if (episodeInFavourites) {
-			const favouritesWithoutEpisode = state.favourites.filter(
-				fav => fav.id !== episode.id
-			);
+		if (teamInFavourites) {
+			const { favourites } = state;
+			const favouritesWithoutTeam = favourites.filter(fav => {
+				const { TeamID: FavTeamID } = fav;
+				const { TeamID } = team;
+				return FavTeamID !== TeamID;
+			});
 
 			dispatchObj = {
 				type: "REMOVE_FAV",
-				payload: favouritesWithoutEpisode
+				payload: favouritesWithoutTeam
 			};
 		}
 
@@ -31,14 +35,15 @@ const FavPage = () => {
 	const { favourites } = state;
 
 	const props = {
-		episodes: favourites,
+		teams: favourites,
 		toggleFavAction,
 		favourites
 	};
+
 	return (
 		<Suspense fallback={<div>Loading...</div>}>
-			<div className="episode-layout">
-				<EpisodesList {...props} />
+			<div className="team-layout">
+				<TeamsList {...props} />
 			</div>
 		</Suspense>
 	);
