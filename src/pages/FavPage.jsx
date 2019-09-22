@@ -1,52 +1,50 @@
-import React, { lazy, useContext, Suspense } from "react";
+import React, { Suspense, lazy, useContext } from "react";
 import { Store } from "../Store";
 
 const TeamsList = lazy(() => import("../components/TeamsList"));
 
 const FavPage = () => {
-	const { state, dispatch } = useContext(Store);
+  const { state: { favourites }, dispatch } = useContext(Store);
 
-	const toggleFavAction = team => {
-		const { favourites } = state;
-		const teamInFavourites = favourites.includes(team);
 
-		let dispatchObj = {
-			type: "ADD_FAV",
-			payload: team
-		};
+  const toggleFavAction = team => {
+    const teamInFavourites = favourites.includes(team);
 
-		if (teamInFavourites) {
-			const { favourites } = state;
-			const favouritesWithoutTeam = favourites.filter(fav => {
-				const { TeamID: FavTeamID } = fav;
-				const { TeamID } = team;
-				return FavTeamID !== TeamID;
-			});
+    if (teamInFavourites) {
+      const favouritesWithoutTeam = favourites.filter(fav => {
+        const { TeamID: FavTeamID } = fav;
+        const { TeamID } = team;
+        return FavTeamID !== TeamID;
+      });
 
-			dispatchObj = {
-				type: "REMOVE_FAV",
-				payload: favouritesWithoutTeam
-			};
-		}
+      return dispatch({
+        type: "REMOVE_FAV",
+        payload: favouritesWithoutTeam,
+      });
+    }
 
-		return dispatch(dispatchObj);
-	};
+    else {
+      return dispatch({
+        type: "ADD_FAV",
+        payload: team,
+      });
+    }
 
-	const { favourites } = state;
+  };
 
-	const props = {
-		teams: favourites,
-		toggleFavAction,
-		favourites
-	};
-
-	return (
-		<Suspense fallback={<div>Loading...</div>}>
-			<div className="team-layout">
-				<TeamsList {...props} />
-			</div>
-		</Suspense>
-	);
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <div className="team-layout">
+        <TeamsList
+          {...{
+            teams: favourites,
+            toggleFavAction,
+            favourites,
+          }}
+        />
+      </div>
+    </Suspense>
+  );
 };
 
 export default FavPage;

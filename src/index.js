@@ -10,15 +10,15 @@ import HomePage from "./pages/HomePage";
 import FavPage from "./pages/FavPage";
 
 ReactDOM.render(
-	<StoreProivder>
-		<Router>
-			<App path="/">
-				<HomePage path="/" />
-				<FavPage path="/faves" />
-			</App>
-		</Router>
-	</StoreProivder>,
-	document.getElementById("root")
+  <StoreProivder>
+    <Router>
+      <App path="/">
+        <HomePage path="/" />
+        <FavPage path="/faves" />
+      </App>
+    </Router>
+  </StoreProivder>,
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change
