@@ -4,8 +4,10 @@ import { Store } from "../Store";
 const TeamsList = lazy(() => import("../components/TeamsList"));
 
 const FavPage = () => {
-  const { state: { favourites }, dispatch } = useContext(Store);
-
+  const {
+    state: { favourites },
+    dispatch,
+  } = useContext(Store);
 
   const toggleFavAction = team => {
     const teamInFavourites = favourites.includes(team);
@@ -23,13 +25,10 @@ const FavPage = () => {
       });
     }
 
-    else {
-      return dispatch({
-        type: "ADD_FAV",
-        payload: team,
-      });
-    }
-
+    return dispatch({
+      type: "ADD_FAV",
+      payload: team,
+    });
   };
 
   return (
