@@ -3,7 +3,8 @@ import TeamBox from "./TeamBox";
 
 const TeamsList = ({ teams, toggleFavAction, favourites }) => {
   return teams.map(team => {
-    return <TeamBox {...{ team, toggleFavAction, favourites }} />;
+    const { TeamID: key } = team;
+    return <TeamBox {...{ key, team, toggleFavAction, favourites }} />;
   });
 };
 

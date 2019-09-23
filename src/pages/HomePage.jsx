@@ -1,5 +1,6 @@
 import React, { Suspense, lazy, useContext, useEffect } from "react";
 import { Store } from "../Store";
+import { isArrayEmpty } from "../helpers";
 
 const TeamsList = lazy(() => import("../components/TeamsList"));
 
@@ -13,7 +14,7 @@ const HomePage = () => {
     const teamInFavourites = favourites.includes(team);
 
     if (teamInFavourites) {
-      const favouritesWithoutTeam = favourites.filter(fav => {
+      const payload = favourites.filter(fav => {
         const { TeamID: FavTeamID } = fav;
         const { TeamID } = team;
         return FavTeamID !== TeamID;
@@ -21,7 +22,7 @@ const HomePage = () => {
 
       return dispatch({
         type: "REMOVE_FAV",
-        payload: favouritesWithoutTeam,
+        payload,
       });
     }
 
@@ -33,17 +34,18 @@ const HomePage = () => {
 
   const fetchDataAction = async () => {
     const data = await fetch("/data/teams-with-stadiums.json");
-    const dataJSON = await data.json();
-    console.log(dataJSON);
+    const payload = await data.json();
 
     return dispatch({
       type: "FETCH_DATA",
-      payload: dataJSON,
+      payload,
     });
   };
 
   useEffect(() => {
-    teams.length === 0 && fetchDataAction();
+    if (isArrayEmpty(teams)) {
+      fetchDataAction();
+    }
   });
 
   return (

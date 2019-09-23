@@ -3,8 +3,10 @@ import { Link } from "@reach/router";
 import { Store } from "./Store";
 
 const App = ({ children }) => {
-  const { state } = useContext(Store);
-  const { favourites } = state;
+  const {
+    state: { favourites },
+  } = useContext(Store);
+
   return (
     <>
       <Suspense fallback={<div>Loading...</div>}>

@@ -13,7 +13,7 @@ const FavPage = () => {
     const teamInFavourites = favourites.includes(team);
 
     if (teamInFavourites) {
-      const favouritesWithoutTeam = favourites.filter(fav => {
+      const payload = favourites.filter(fav => {
         const { TeamID: FavTeamID } = fav;
         const { TeamID } = team;
         return FavTeamID !== TeamID;
@@ -21,7 +21,7 @@ const FavPage = () => {
 
       return dispatch({
         type: "REMOVE_FAV",
-        payload: favouritesWithoutTeam,
+        payload,
       });
     }
 
