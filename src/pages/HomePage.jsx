@@ -30,9 +30,10 @@ const HomePage = () => {
 
 	const fetchDataAction = async () => {
 		const data = await fetch(
-			"https://api.tvmaze.com/singlesearch/shows?q=rick-&-morty&embed=episodes"
+			"https://api.tvmaze.com/singlesearch/shows?q=wilfred&embed=episodes"
 		);
 		const dataJSON = await data.json();
+
 		return dispatch({
 			type: "FETCH_DATA",
 			payload: dataJSON._embedded.episodes

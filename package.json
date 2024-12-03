@@ -1,8 +1,11 @@
 {
-  "name": "rick-and-morty-episode-picker",
-  "homepage": "http://radtket.github.io/rick-and-morty-episode-picker",
+  "name": "wilfred-episode-picker",
+  "homepage": "http://radtket.github.io/wilfred-episode-picker",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "12.22.6"
+  },
   "dependencies": {
     "@reach/router": "^1.2.1",
     "react": "^16.8.5",

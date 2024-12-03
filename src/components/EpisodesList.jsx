@@ -5,7 +5,7 @@ const EpisodesList = ({ episodes, toggleFavAction, favourites }) => {
 		const { id, image, season, number, name } = episode;
 		return (
 			<section key={id} className="episode-box">
-				<img src={image.medium} alt={`Rick and Morty ${name}`} />
+				<img src={image.medium} alt={`Wilfred ${name}`} />
 				<div>{name}</div>
 				<section style={{ display: "flex", justifyContent: "space-between" }}>
 					<div>

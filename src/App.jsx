@@ -9,7 +9,7 @@ const App = props => {
 			<Suspense fallback={<div>Loading...</div>}>
 				<header className="header">
 					<div>
-						<h1>Rick and Morty</h1>
+						<h1>Wilfred</h1>
 						<p>Pick your favourite episodes</p>
 					</div>
 
